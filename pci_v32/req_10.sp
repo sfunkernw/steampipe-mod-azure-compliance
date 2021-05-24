@@ -57,7 +57,7 @@ control "pci_v32_10_1_storage_account_blob_logging_enabled" {
 
 control "pci_v32_10_1_sql_server_auditing_on" {
   title         = "SQL server auditing should be on"
-  description   = "SQL server auditing should be on.."
+  description   = "SQL server auditing should be on."
   sql           = query.sql_server_auditing_on.sql
   #documentation = file("./pci_v32/docs/pci_v32_10_1_sql_server_auditing_on.md")
 
