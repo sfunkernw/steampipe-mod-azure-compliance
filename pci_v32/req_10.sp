@@ -32,10 +32,10 @@ benchmark "pci_v32_10_1" {
 }
 
 control "pci_v32_10_1_storage_account_queue_logging_enabled" {
-  title         = "Storage account queue logging should be enabled"
-  description   = "Storage account queue logging should be enabled."
+  title         = "Ensure Storage logging is enabled for Queue service for read, write, and delete requests"
+  description   = control.cis_v130_3_3.description
   sql           = query.storage_account_queue_services_logging_enabled.sql
-  #documentation = file("./pci_v32/docs/pci_v32_10_1_storage_account_queue_logging_enabled.md")
+  documentation = control.cis_v130_3_3.documentation
 
   tags = merge(local.pci_v32_10_1_common_tags, {
     resource = "storage_account"
@@ -44,10 +44,10 @@ control "pci_v32_10_1_storage_account_queue_logging_enabled" {
 }
 
 control "pci_v32_10_1_storage_account_blob_logging_enabled" {
-  title         = "Storage account blob logging should be enabled"
-  description   = "Storage account blob logging should be enabled."
+  title         = "Ensure Storage logging is enabled for Blob service for read, write, and delete requests"
+  description   = control.cis_v130_3_10.description
   sql           = query.storage_account_blob_service_logging_enabled.sql
-  #documentation = file("./pci_v32/docs/pci_v32_10_1_storage_account_blob_logging_enabled.md")
+  documentation = control.cis_v130_3_10.documentation
 
   tags = merge(local.pci_v32_10_1_common_tags, {
     resource = "storage_account"
@@ -56,10 +56,11 @@ control "pci_v32_10_1_storage_account_blob_logging_enabled" {
 }
 
 control "pci_v32_10_1_sql_server_auditing_on" {
-  title         = "SQL server auditing should be on"
-  description   = "SQL server auditing should be on."
+  title         = "Ensure that 'Auditing' is set to 'On'"
+  #title         = "SQL server auditing should be on"
+  description   = control.cis_v130_4_1_1.description
   sql           = query.sql_server_auditing_on.sql
-  #documentation = file("./pci_v32/docs/pci_v32_10_1_sql_server_auditing_on.md")
+  documentation = control.cis_v130_4_1_1.documentation
 
   tags = merge(local.pci_v32_10_1_common_tags, {
     resource = "sql_server"
